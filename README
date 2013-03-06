@@ -1,0 +1,21 @@
+
+This is a crawler that get some qq number from tencent website.
+
+Used jar file
+
+httpclient - simulate send user request 
+
+mysql-connector - connect to mysql driven
+
+jutil - operate  mysql database
+
+
+run this java application
+
+1: set up ant runnable environment.
+
+2: in command line, execute ant build command.
+
+3: Than it will generate a dist directory, you will find a jar file,
+double click it.That's all you should do.
+
