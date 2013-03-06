@@ -63,7 +63,7 @@ public class QQZoneCrawler extends WebCrawler {
 			@Override
 			public void run() {
 				//重新拨号修改ip
-				DialUtils.dial("宽带连接","07550055241@163.gd","YMKOUBXY");
+				DialUtils.dial("宽带连接","XXXX","XXXX");
 			}
 			
 		}, 60, dialIntervalTime, TimeUnit.SECONDS);

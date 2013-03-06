@@ -119,15 +119,9 @@ public class DialUtils {
    
     public static void main(String[] args) throws Exception {
     	
-//    	for(int i=0;i<10;i++){
-//    		dial("宽带连接","07550055241@163.gd","YMKOUBXY");
-//	        Thread.sleep(1000);
-//	        //dial("宽带连接");
-//	        //Thread.sleep(1000);
-//    	}
-    	dial("宽带连接","07550055241@163.gd","YMKOUBXY");
+    	dial("宽带连接","XXX.gd","XXXX");
         //再连，分配一个新的IP
-        //connAdsl("dial","07550055241@163.gd","YMKOUBXY");
+        //connAdsl("dial","XXX","XXX");
         
         for(Map.Entry<String,Object> entry : ipCache.entrySet()){
         	String key = entry.getKey();
