@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Crawler" default="dist" basedir=".">
+    <description>
+         build aoto  generate sql statement 
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="resources" location="resources" />
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  <property name="lib.dir" value="lib"/> 
+  <property name="mainClass" value="com.chen.crawler.QQZoneCrawler" />
+	
+	<pathconvert property="mf.classpath" pathsep=" ">  
+	  	      <mapper>  
+	  	        <chainedmapper>  
+	  	          <!-- remove absolute path -->  
+	  	          <flattenmapper />  
+	  	  
+	  	          <!-- add lib/ prefix -->  
+	  	          <globmapper from="*" to="lib/*" />  
+	  	        </chainedmapper>  
+	  	      </mapper>  
+	  	      <path>  
+	  	        <!-- lib.home contains all jar files,   
+	  	                                        in several subdirectories -->  
+	  	        <fileset dir="${lib.dir}">  
+	  	          <include name="**/*.jar" />  
+	  	        </fileset>  
+	  	      </path>  
+	  	  
+	</pathconvert> 
+	
+	<path id="classpath"> 
+			<fileset file="${lib.dir}" includes="**/*.jar" />
+	</path>	
+	
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+	 <target name="clean"
+	        description="clean up" >
+	    <!-- Delete the ${build} and ${dist} directory trees -->
+	    <delete dir="${build}"/>
+	    <delete dir="${dist}"/>
+	  </target>
+	
+  <target name="compile" depends="clean,init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+  	<copydir dest="${build}/classes" src="resources"></copydir>
+  	<copy todir="${build}/classes">
+  		<fileset dir="${src}">
+  			<exclude name="**/*.java"/>
+  			<include name="**/*.*"/>
+  		</fileset>
+  	</copy>
+    <javac srcdir="${src}" destdir="${build}/classes" encoding="utf-8" debug="true">
+    	<src path="src"></src>
+    	<src path="src"></src>
+    	<classpath refid="classpath"></classpath>
+     </javac>
+  </target>
+
+  <target name="dist" depends="compile"   description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+	
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/crawler-${DSTAMP}.jar" basedir="${build}">
+    		<fileset dir="${build}/classes">
+    			<include name="**/*.*"/>
+    		</fileset>
+    		<manifest>  
+		        <attribute name="Main-Class" value="${mainClass}"/>  
+		        <attribute name="Class-Path" value="${mf.classpath}"/>  
+    	     </manifest> 
+    </jar>	
+  	
+  	 <!-- copy all the jar files out to the destination directory (dest.dir) -->
+  		  	  <copy todir="${dist}/lib">
+  		  	    <fileset dir="${lib.dir}">
+  		  	      <exclude name="junit*" />
+  		  	      <include name="*.jar"/>
+  		  	      <include name="*.zip"/>
+  		  	    </fileset>
+  		  	  	
+   </copy>
+  </target>
+
+</project>

@@ -1,0 +1,44 @@
+<all-config>
+<connection name="leku_db">
+       <type value="Proxool" />
+       <host value="10.10.150.21" />
+       <port value="3306" />
+       <user value="root" />
+       <password value="123456" />
+       <db value="leku_app" />
+       <maximum-connection-count value="100" />
+       <maximum-connection-lifetime value="3600000" />
+       <minimum-connection-count value="1" />
+	   <simultaneous-build-throttle value="20" />
+</connection>
+
+
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+<connection name="user_db">
+       <type value="Proxool" />
+       <host value="10.10.10.7" />
+       <port value="3306" />
+       <user value="u_96333" />
+       <password value="u_96333" />
+       <db value="d3_96333" />
+       <maximum-connection-count value="100" />
+       <maximum-connection-lifetime value="3600000" />
+       <minimum-connection-count value="1" />
+	   <simultaneous-build-throttle value="20" />
+</connection>
+
+
+<connection name="qquser">
+       <type value="Proxool" />
+       <host value="127.0.0.1" />
+       <port value="3306" />
+       <user value="root" />
+       <password value="root" />
+       <db value="qquser" />
+       <maximum-connection-count value="100" />
+       <maximum-connection-lifetime value="3600000" />
+       <minimum-connection-count value="1" />
+	   <simultaneous-build-throttle value="20" />
+</connection>
+
+</all-config>
